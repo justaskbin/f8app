@@ -25,7 +25,7 @@
 "use strict";
 
 import React from "react";
-import { AppState, StyleSheet, StatusBar, View } from "react-native";
+import { AppState, StyleSheet, StatusBar, View , Text } from "react-native";
 import LoginScreen from "./login/LoginScreen";
 import PushNotificationsController from "./PushNotificationsController";
 import F8Navigator from "./F8Navigator";
