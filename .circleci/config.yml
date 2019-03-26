@@ -26,6 +26,7 @@ jobs:
       - image: circleci/android:api-27-node8-alpha
     steps:
       - checkout
+      - run: yes | $ANDROID_HOME/tools/bin/sdkmanager --licenses || if [ $? -ne '141' ]; then exit $?; fi;  #Captures SIGPIPE 141 error but still allow repeating "y" to accept all licenses
       - run: yarn install
       - run: cd android && ./gradlew assembleDebug
 
