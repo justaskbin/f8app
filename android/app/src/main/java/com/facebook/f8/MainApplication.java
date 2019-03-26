@@ -21,6 +21,8 @@ import com.facebook.appevents.AppEventsLogger;
 import java.util.Arrays;
 import java.util.List;
 
+import com.theweflex.react.WeChatPackage;       // Add this line before public class MainActivity
+
 
 
 public class MainApplication extends Application implements ReactApplication {
@@ -46,7 +48,8 @@ public class MainApplication extends Application implements ReactApplication {
             new PhotoViewPackage(),
         new FBSDKPackage(mCallbackManager),
         new ReactNativePushNotificationPackage(),
-        new LinearGradientPackage()
+        new LinearGradientPackage(),
+        new WeChatPackage()        // Add this line
       );
     }
   };
