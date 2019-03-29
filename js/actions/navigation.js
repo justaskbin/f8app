@@ -24,7 +24,8 @@
 
 import type { Action } from "./types";
 
-type Tab = "schedule" | "myF8" | "demos" | "videos" | "info";
+// type Tab = "schedule" | "myF8" | "demos" | "videos" | "info";
+type Tab = "schedule" | "myF8" | "trends" | "videos" | "info";
 
 module.exports = {
   switchTab: (tab: Tab): Action => ({

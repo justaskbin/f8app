@@ -200,7 +200,7 @@ function actions(dispatch) {
 
 function select(store) {
   return {
-    videos: data(store),
+    trends: data(store),
     topics: store.videoTopics,
     filter: store.videoFilter
   };
