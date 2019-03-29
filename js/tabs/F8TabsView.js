@@ -45,8 +45,9 @@ import F8InfoView from "./info/F8InfoView";
 import MyScheduleView from "./schedule/MyScheduleView";
 import GeneralScheduleView from "./schedule/GeneralScheduleView";
 import F8VideosView from "./videos/F8VideosView";
+import F8TrendsView from "./trends/F8TrendsView";
 import TabNavigator from "react-native-tab-navigator";
-import F8DemosView from "./demos/F8DemosView";
+//import F8DemosView from "./demos/F8DemosView";
 
 import { currentTimeOnConferenceDay } from "../common/convertTimes";
 
@@ -174,18 +175,32 @@ class F8TabsView extends React.Component {
           />
         </TabNavigator.Item>
 
+        {/*<TabNavigator.Item*/}
+        {/*  title="Demos"*/}
+        {/*  titleStyle={styles.tabTitle}*/}
+        {/*  selectedTitleStyle={styles.tabTitleActive}*/}
+        {/*  selected={this.props.tab === "demos"}*/}
+        {/*  onPress={this.onTabSelect.bind(this, "demos")}*/}
+        {/*  renderIcon={_ =>*/}
+        {/*    this.renderTabIcon(require("./demos/img/tab-icon/default.png"))}*/}
+        {/*  renderSelectedIcon={_ =>*/}
+        {/*    this.renderTabIcon(require("./demos/img/tab-icon/active.png"))}*/}
+        {/*>*/}
+        {/*  <F8DemosView navigator={this.props.navigator} />*/}
+        {/*</TabNavigator.Item>*/}
+
         <TabNavigator.Item
-          title="Demos"
           titleStyle={styles.tabTitle}
+          title="Trends"
           selectedTitleStyle={styles.tabTitleActive}
-          selected={this.props.tab === "demos"}
-          onPress={this.onTabSelect.bind(this, "demos")}
+          selected={this.props.tab === "trends"}
+          onPress={this.onTabSelect.bind(this, "trends")}
           renderIcon={_ =>
-            this.renderTabIcon(require("./demos/img/tab-icon/default.png"))}
+            this.renderTabIcon(require("./trends/img/tab-icon/default.png"))}
           renderSelectedIcon={_ =>
-            this.renderTabIcon(require("./demos/img/tab-icon/active.png"))}
+            this.renderTabIcon(require("./trends/img/tab-icon/active.png"))}
         >
-          <F8DemosView navigator={this.props.navigator} />
+          <F8TrendsView navigator={this.props.navigator} />
         </TabNavigator.Item>
 
         <TabNavigator.Item
