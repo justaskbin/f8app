@@ -591,7 +591,6 @@
 				139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */,
 				832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */,
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
-				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				AC84A694044143A5965F8E75 /* RCTFBSDK.xcodeproj */,
 				D88E526290554232ABA3F7BC /* RNVideoPlayer.xcodeproj */,
 				75B177E8AB114A5C9AE0BF0C /* BVLinearGradient.xcodeproj */,
@@ -611,6 +610,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				13B07FAE1A68108700A75B9A /* F82017 */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* F82017Tests */,
