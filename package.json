@@ -11,7 +11,8 @@
     "prettier": "prettier --write '**/*.js'",
     "prepush": "./scripts/pre-push-checks.sh",
     "graphql": "babel-node ./scripts/generate-graphql-schema.js",
-    "relay": "relay-compiler --src ./js --schema ./server/graphql/src/schema/__generated__/schema.graphql"
+    "relay": "relay-compiler --src ./js --schema ./server/graphql/src/schema/__generated__/schema.graphql",
+    "populateData": "babel-node ./scripts/populateData.js"
   },
   "dependencies": {
     "crc32": "^0.2.2",

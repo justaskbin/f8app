@@ -18,60 +18,27 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
  * DEALINGS IN THE SOFTWARE
+ *
+ * @flow
  */
 
 "use strict";
 
-import type { Action } from "./types";
+type State = Array<string>;
+type Action = { type: string, list: Array<any> };
 
-type Schedule = { [key: string]: boolean };
-type Video = { [key: string]: boolean };
-type Trend = { [key: string]: boolean };
-
-function applyScheduleFilter(scheduleTopics: Schedule): Action {
-  return {
-    type: "APPLY_SCHEDULE_TOPICS_FILTER",
-    scheduleTopics
-  };
+function topics(state: State = [], action: Action): State {
+  if (action.type === "LOADED_TRENDS") {
+    const topicsMap = Object.create(null);
+    action.list.forEach(trend => {
+      const tags = trend.get("tags") || [];
+      tags.forEach(tag => {
+        topicsMap[tag] = true;
+      });
+    });
+    return Object.keys(topicsMap).sort();
+  }
+  return state;
 }
 
-function clearScheduleFilter(): Action {
-  return {
-    type: "CLEAR_SCHEDULE_FILTER"
-  };
-}
-
-function applyVideoFilter(videoTopics: Video): Action {
-  return {
-    type: "APPLY_VIDEO_TOPICS_FILTER",
-    videoTopics
-  };
-}
-
-function clearVideoFilter(): Action {
-  return {
-    type: "CLEAR_VIDEO_FILTER"
-  };
-}
-
-function applyTrendFilter(trendTopics: Trend): Action {
-  return {
-    type: "APPLY_TREND_TOPICS_FILTER",
-    trendTopics
-  };
-}
-
-function clearTrendFilter(): Action {
-  return {
-    type: "CLEAR_TREND_FILTER"
-  };
-}
-
-module.exports = {
-  applyScheduleFilter,
-  clearScheduleFilter,
-  applyVideoFilter,
-  clearVideoFilter,
-  applyTrendFilter,
-  clearTrendFilter
-};
+module.exports = topics;

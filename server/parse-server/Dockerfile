@@ -1,4 +1,4 @@
-FROM node:8.4-alpine
+FROM node:8.11-alpine
 
 RUN ["npm", "install", "-g", "parse-server"]
 
@@ -7,3 +7,4 @@ RUN [ "npm", "install" ]
 RUN [ "npm", "run", "build" ]
 
 ENTRYPOINT [ "parse-server", "config.json" ]
+

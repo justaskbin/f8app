@@ -35,6 +35,7 @@ const FAQ = Parse.Object.extend("FAQ");
 const Page = Parse.Object.extend("Page");
 const Video = Parse.Object.extend("Video");
 const Policy = Parse.Object.extend("Policy");
+const Trend = Parse.Object.extend("Trend");
 
 function loadParseQuery(type: string, query: Parse.Query): ThunkAction {
   return dispatch => {
@@ -91,6 +92,13 @@ function loadPolicies(): ThunkAction {
   return loadParseQuery(
     "LOADED_POLICIES",
     new Parse.Query(Policy).ascending("title")
+  );
+}
+
+function loadTrends(): ThunkAction {
+  return loadParseQuery(
+    "LOADED_TRENDS",
+    new Parse.Query(Trend).descending("updatedAt")
   );
 }
 
