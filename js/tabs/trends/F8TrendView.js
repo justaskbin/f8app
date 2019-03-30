@@ -36,7 +36,7 @@ import { shareVideo } from "../../actions";
 /* <F8VideoView />
 ============================================================================= */
 
-class F8TrendingView extends React.Component {
+class F8TrendView extends React.Component {
   render() {
     const { video } = this.props;
 
@@ -129,4 +129,4 @@ const styles = StyleSheet.create({
 });
 
 /* exports ================================================================== */
-module.exports = connect()(F8VideoView);
+module.exports = connect()(F8TrendView);

@@ -29,7 +29,7 @@ import F8Colors from "../../common/F8Colors";
 import F8Linking from "../../common/F8Linking";
 import F8EmptyTrendsView from "./F8EmptyTrendsView";
 import F8TrendThumb from "./F8TrendThumb";
-import * as FilterTrends from "./filterTrendings";
+import * as FilterTrends from "./filterTrends";
 import FilterHeader from "../schedule/FilterHeader";
 import FilterScreen from "../../filter/FilterScreen";
 

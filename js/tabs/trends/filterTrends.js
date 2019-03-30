@@ -21,7 +21,7 @@
  */
 "use strict";
 
-import type { Videos } from "../../reducers/videos";
+import type { Trend } from "../../reducers/trends";
 
 type StringMap = { [key: string]: boolean };
 
@@ -34,8 +34,8 @@ type StringMap = { [key: string]: boolean };
 * @return {Array}
 * ==============================================================================
 */
-export function byYear(videos: Array<Video>, year: number): Array<Video> {
-  return videos.filter(video => video.year === year);
+export function byYear(trends: Array<Trend>, year: number): Array<Trend> {
+  return trends.filter(trend => trend.year === year);
 }
 
 /**
@@ -47,16 +47,16 @@ export function byYear(videos: Array<Video>, year: number): Array<Video> {
 * ==============================================================================
 */
 export function asListRows(
-  videos: Array<Video> = [],
+  trends: Array<Trend> = [],
   splitRowsThreshold: number = 6
 ): Array {
   const rows = [];
   // pull out featured trends force single row and place at the start of the list
   rows.push(
-    ...videos.filter(v => v.featured).map(f => [{ type: "large", ...f }])
+    ...trends.filter(v => v.featured).map(f => [{ type: "large", ...f }])
   );
   // filter non-featured trends and do 2-up or full-width depending on length
-  const rest = videos.filter(v => !v.featured);
+  const rest = trends.filter(v => !v.featured);
   if (rest.length >= splitRowsThreshold) {
     rows.push([]); // start rows
     rest.map(v => {
@@ -85,15 +85,15 @@ export function asListRows(
 * ==============================================================================
 */
 export function byTopics(
-  videos: Array<Video>,
+  trends: Array<Trend>,
   topics: StringMap
-): Array<Video> {
+): Array<Trend> {
   if (Object.keys(topics).length === 0) {
-    return videos;
+    return trends;
   }
-  return videos.filter(video => {
+  return trends.filter(trend => {
     let hasMatchingTag = false;
-    video.tags.forEach(tag => {
+    trend.tags.forEach(tag => {
       hasMatchingTag = hasMatchingTag || topics[tag];
     });
     return hasMatchingTag;

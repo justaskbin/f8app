@@ -109,5 +109,6 @@ export {
   loadFAQs,
   loadPages,
   loadVideos,
-  loadPolicies
+  loadPolicies,
+  loadTrends
 };
