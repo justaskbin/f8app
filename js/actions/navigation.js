@@ -26,6 +26,7 @@ import type { Action } from "./types";
 
 // type Tab = "schedule" | "myF8" | "demos" | "videos" | "info";
 type Tab = "schedule" | "myF8" | "trends" | "videos" | "info";
+type TrendCategory = "things" | "footprint";
 
 module.exports = {
   switchTab: (tab: Tab): Action => ({
@@ -36,5 +37,11 @@ module.exports = {
   switchDay: (day: 1 | 2): Action => ({
     type: "SWITCH_DAY",
     day
+  }),
+
+  switchTrendCategory: (trend_category: TrendCategory): Action => ({
+    type: "SWITCH_TREND_CATEGORY",
+    trend_category
   })
+
 };

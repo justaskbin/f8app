@@ -30,12 +30,15 @@ export type Tab = "schedule" | "my-schedule" | "map" | "notifications" | "info";
 
 export type Day = 1 | 2;
 
+export type TrendCategory = "things" | "footprint";
+
 type State = {
   tab: Tab,
-  day: Day
+  day: Day,
+  trend_category: TrendCategory
 };
 
-const initialState: State = { tab: "schedule", day: 1 };
+const initialState: State = { tab: "schedule", day: 1, trend_category: "thing" };
 
 function navigation(state: State = initialState, action: Action): State {
   if (action.type === "SWITCH_TAB") {
@@ -46,6 +49,9 @@ function navigation(state: State = initialState, action: Action): State {
   }
   if (action.type === "LOGGED_OUT") {
     return initialState;
+  }
+  if (action.type === "SWITCH_TREND_CATEGORY") {
+    return { ...state, trend_category: action.trend_category };
   }
   return state;
 }
