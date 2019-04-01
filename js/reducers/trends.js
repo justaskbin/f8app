@@ -37,12 +37,15 @@ export type Trend = {
   year: number,
   tags: Array<string>,
   featured: ?boolean,
-  location: ?string
+  location: ?string,
   // speakers: Array<Speaker>,
+  organizations: Array<string>
   // survey/rating/review?
 };
 
 function fromParseTrends(trend: Object): Trend {
+  var imageFile = trend.get("trendImage");
+  var imageUrl = imageFile.url();
   return {
     id: trend.id,
     title: trend.get("trendTitle"),
@@ -50,11 +53,12 @@ function fromParseTrends(trend: Object): Trend {
     hasDetails: trend.get("hasDetails"),
     onMySchedule: trend.get("onMySchedule"),
     slug: trend.get("trendSlug"),
-    image: trend.get("trendImage"),
+    image: imageUrl,
     year: trend.get("year"),
     tags: trend.get("tags") || [],
     featured: trend.get("featured"),
-    location: trend.get("location")
+    location: trend.get("location"),
+    organizations: trend.get("organizations")
   };
 }
 

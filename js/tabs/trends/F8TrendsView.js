@@ -34,14 +34,14 @@ import FilterHeader from "../schedule/FilterHeader";
 import FilterScreen from "../../filter/FilterScreen";
 
 import { connect } from "react-redux";
-import { applyVideoFilter, clearVideoFilter } from "../../actions";
+import { applyTrendFilter, clearTrendFilter } from "../../actions";
 import { createSelector } from "reselect";
 
 /**
 * ==============================================================================
 * <F8TrendsView />
 * ------------------------------------------------------------------------------
-* @param {Array.<Trend>} videos    Parse Trend class
+* @param {Array.<Trend>} trends    Parse Trend class
 * @param {F8Navigator}   navigator Navigation methods
 * @return {ReactElement}
 * ==============================================================================
@@ -147,7 +147,7 @@ class F8TrendsView extends React.Component {
   }
 
   onPressEmptyCTA() {
-    F8Linking.openURL("https://developers.facebook.com/videos/");
+    F8Linking.openURL("https://developers.facebook.com/Trends/");
   }
 
   onPress(selected) {
@@ -172,19 +172,19 @@ class F8TrendsView extends React.Component {
 /* redux ==================================================================== */
 
 const data = createSelector(
-  store => store.videos,
-  store => store.videoFilter,
-  (videos, filter) => sortFeatured(FilterTrends.byTopics(videos, filter))
+  store => store.trends,
+  store => store.trendFilter,
+  (trends, filter) => sortFeatured(FilterTrends.byTopics(trends, filter))
 );
 
-function sortFeatured(videos = []) {
+function sortFeatured(trends = []) {
   const other = [],
     pinned = [];
-  videos.map(video => {
-    if (video.featured) {
-      pinned.push(video);
+  trends.map(trend => {
+    if (trend.featured) {
+      pinned.push(trend);
     } else {
-      other.push(video);
+      other.push(trend);
     }
   });
   return [...pinned, ...other];
@@ -193,16 +193,16 @@ function sortFeatured(videos = []) {
 function actions(dispatch) {
   return {
     // switchDay: (day) => dispatch(switchDay(day)),
-    filterTopics: selected => dispatch(applyVideoFilter(selected)),
-    clearFilter: _ => dispatch(clearVideoFilter())
+    filterTopics: selected => dispatch(applyTrendFilter(selected)),
+    clearFilter: _ => dispatch(clearTrendFilter())
   };
 }
 
 function select(store) {
   return {
     trends: data(store),
-    topics: store.videoTopics,
-    filter: store.videoFilter
+    topics: store.trendTopics,
+    filter: store.trendFilter
   };
 }
 

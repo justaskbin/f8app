@@ -44,6 +44,7 @@ import F8VideoView from "./tabs/videos/F8VideoView";
 import { switchTab } from "./actions";
 import F8MapView from "./tabs/maps/F8MapView";
 import DemosCarousel from "./tabs/demos/DemosCarousel";
+import F8TrendView from "./tabs/trends/F8TrendView";
 
 const F8Navigator = React.createClass({
   _handlers: ([]: Array<() => boolean>),
@@ -108,7 +109,8 @@ const F8Navigator = React.createClass({
             route.video ||
             route.session ||
             route.allSession ||
-            route.allDemos
+            route.allDemos ||
+              route.trend
           ) {
             return Navigator.SceneConfigs.PushFromRight;
           } else {
@@ -147,7 +149,11 @@ const F8Navigator = React.createClass({
       return <F8MapView directions={false} navigator={navigator} />;
     } else if (route.allDemos) {
       return <DemosCarousel {...route} navigator={navigator} />;
-    } else {
+    } else if (route.trend) {
+      return <F8TrendView trend={route.trend} navigator={navigator}/>;
+    }
+
+    else {
       return <F8TabsView navigator={navigator} />;
     }
   }

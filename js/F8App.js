@@ -40,7 +40,8 @@ import {
   loadSurveys,
   loadVideos,
   loadPolicies,
-  restoreSchedule
+  restoreSchedule,
+  loadTrends
 } from "./actions";
 import { updateInstallation } from "./actions/installation";
 import { connect } from "react-redux";
@@ -59,6 +60,7 @@ class F8App extends React.Component {
     this.props.dispatch(loadFAQs());
     this.props.dispatch(loadPages());
     this.props.dispatch(loadPolicies());
+    this.props.dispatch(loadTrends());
 
     if (this.props.isLoggedIn) {
       this.props.dispatch(restoreSchedule());
@@ -78,6 +80,7 @@ class F8App extends React.Component {
       this.props.dispatch(loadSessions());
       this.props.dispatch(loadVideos());
       this.props.dispatch(loadNotifications());
+      this.props.dispatch(loadTrends());
 
       if (this.props.isLoggedIn) {
         this.props.dispatch(restoreSchedule());

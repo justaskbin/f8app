@@ -43,6 +43,10 @@ module.exports = combineReducers({
   videos: require("./videos"),
   videoTopics: require("./videoTopics"),
   videoFilter: require("./videoFilter"),
+
+  trends: require("./trends"),
+  trendTopics: require("./trendTopics"),
+  trendFilter: require("./trendFilter"),
   policies: require("./policies"),
 
   testEventDates: require("./testEventDates")

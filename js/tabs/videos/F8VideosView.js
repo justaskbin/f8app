@@ -41,7 +41,7 @@ import { createSelector } from "reselect";
 * ==============================================================================
 * <F8VideosView />
 * ------------------------------------------------------------------------------
-* @param {Array.<Video>} trends    Parse Video class
+* @param {Array.<Video>} videos    Parse Video class
 * @param {F8Navigator}   navigator Navigation methods
 * @return {ReactElement}
 * ==============================================================================
@@ -88,7 +88,7 @@ class F8VideosView extends React.Component {
         rightItem={filterItem}
       >
         <PureListView
-          data={FilterVideos.asListRows(this.props.trends)}
+          data={FilterVideos.asListRows(this.props.videos)}
           renderEmptyList={_ => (
             <F8EmptyVideosView onPress={this.onPressEmptyCTA} />
           )}
@@ -117,12 +117,12 @@ class F8VideosView extends React.Component {
 
   renderRow(row: Array, sid, rid) {
     const largeVideo = row[0] && row[0].type === "large";
-    const content = row.map((trend, idx) => (
+    const content = row.map((video, idx) => (
       <F8VideoThumb
-        key={`vlt_${trend.id}`}
+        key={`vlt_${video.id}`}
         type={largeVideo ? "large" : "small"}
         onPress={this.onPress}
-        {...trend}
+        {...video}
       />
     ));
     return (
@@ -158,8 +158,8 @@ class F8VideosView extends React.Component {
   }
 
   onPress(selected) {
-    const trend = this.props.trends.find(vid => vid.id === selected);
-    this.props.navigator && this.props.navigator.push({ trend });
+    const video = this.props.videos.find(vid => vid.id === selected);
+    this.props.navigator && this.props.navigator.push({ video });
   }
 
   openFilterScreen() {
@@ -179,19 +179,19 @@ class F8VideosView extends React.Component {
 /* redux ==================================================================== */
 
 const data = createSelector(
-  store => store.trends,
-  store => store.trendFilter,
-  (trends, filter) => sortFeatured(FilterVideos.byTopics(trends, filter))
+  store => store.videos,
+  store => store.videoFilter,
+  (videos, filter) => sortFeatured(FilterVideos.byTopics(videos, filter))
 );
 
-function sortFeatured(trends = []) {
+function sortFeatured(videos = []) {
   const other = [],
     pinned = [];
-  trends.map(trend => {
-    if (trend.featured) {
-      pinned.push(trend);
+  videos.map(video => {
+    if (video.featured) {
+      pinned.push(video);
     } else {
-      other.push(trend);
+      other.push(video);
     }
   });
   return [...pinned, ...other];
@@ -207,9 +207,9 @@ function actions(dispatch) {
 
 function select(store) {
   return {
-    trends: data(store),
-    topics: store.trendTopics,
-    filter: store.trendFilter
+    videos: data(store),
+    topics: store.videoTopics,
+    filter: store.videoFilter
   };
 }
 
