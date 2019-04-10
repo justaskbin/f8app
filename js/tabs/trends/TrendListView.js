@@ -33,7 +33,7 @@ import PureListView from "../../common/PureListView";
 import type { Trend } from "../../reducers/trends";
 //import F8EmptyTrendsView from "./F8EmptyTrendsView";
 //import ListContainer from "../../common/ListContainer";
-import {View} from "react-native";
+import { View } from "react-native";
 //import F8Linking from "../../common/F8Linking";
 
 type Props = {
@@ -93,31 +93,30 @@ class TrendListView extends React.Component {
   renderRow(row: Array, sid, rid) {
     const largeTrend = row[0] && row[0].type === "large";
     const content = row.map((trend, idx) => (
-        <F8TrendThumb
-            key={`vlt_${trend.id}`}
-            type={largeTrend ? "large" : "small"}
-            onPress={this.onPress}
-            {...trend}
-        />
+      <F8TrendThumb
+        key={`vlt_${trend.id}`}
+        type={largeTrend ? "large" : "small"}
+        onPress={this.onPress}
+        {...trend}
+      />
     ));
     return (
-        <View
-            style={{
-              flexDirection: "row",
-              alignItems: "flex-start",
-              justifyContent: "flex-start",
-              paddingLeft: 11
-            }}
-        >
-          {content}
-        </View>
+      <View
+        style={{
+          flexDirection: "row",
+          alignItems: "flex-start",
+          justifyContent: "flex-start",
+          paddingLeft: 11
+        }}
+      >
+        {content}
+      </View>
     );
   }
   onPress(selected) {
     const trend = this.props.trends.find(vid => vid.id === selected);
     this.props.navigator && this.props.navigator.push({ trend });
   }
-
 
   // renderSectionHeader(sectionData: any, sectionID: string) {
   //   let formatted =

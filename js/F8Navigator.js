@@ -110,7 +110,7 @@ const F8Navigator = React.createClass({
             route.session ||
             route.allSession ||
             route.allDemos ||
-              route.trend
+            route.trend
           ) {
             return Navigator.SceneConfigs.PushFromRight;
           } else {
@@ -150,10 +150,8 @@ const F8Navigator = React.createClass({
     } else if (route.allDemos) {
       return <DemosCarousel {...route} navigator={navigator} />;
     } else if (route.trend) {
-      return <F8TrendView trend={route.trend} navigator={navigator}/>;
-    }
-
-    else {
+      return <F8TrendView trend={route.trend} navigator={navigator} />;
+    } else {
       return <F8TabsView navigator={navigator} />;
     }
   }

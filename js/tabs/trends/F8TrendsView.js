@@ -25,31 +25,34 @@ import React from "react";
 import EmptyTrend from "./EmptyTrend";
 import { Platform, View } from "react-native";
 import ListContainer from "../../common/ListContainer";
-import PureListView from "../../common/PureListView";
+// import PureListView from "../../common/PureListView";
 import F8Colors from "../../common/F8Colors";
-import F8Linking from "../../common/F8Linking";
-import F8EmptyTrendsView from "./F8EmptyTrendsView";
-import F8TrendThumb from "./F8TrendThumb";
+// import F8Linking from "../../common/F8Linking";
+// import F8EmptyTrendsView from "./F8EmptyTrendsView";
+// import F8TrendThumb from "./F8TrendThumb";
 import * as FilterTrends from "./filterTrends";
 import FilterHeader from "../schedule/FilterHeader";
 import FilterScreen from "../../filter/FilterScreen";
 
 import { connect } from "react-redux";
-import { switchTrendCategory, applyTrendFilter, clearTrendFilter } from "../../actions";
+import {
+  switchTrendCategory,
+  applyTrendFilter,
+  clearTrendFilter
+} from "../../actions";
 import { createSelector } from "reselect";
 
 import type { Trend } from "../../reducers/trends";
 import { Navigator } from "react-native-deprecated-custom-components";
-import type {Session} from "../../reducers/sessions";
-import {sessionsHappeningToday} from "../../common/convertTimes";
-import FilterSessions from "../schedule/filterSessions";
-import EmptySchedule from "../schedule/EmptySchedule";
-import F8Fonts from "../../common/F8Fonts";
-import ScheduleListView from "../schedule/ScheduleListView";
-import F8TimelineBackground from "../../common/F8TimelineBackground";
+// import type { Session } from "../../reducers/sessions";
+// import { sessionsHappeningToday } from "../../common/convertTimes";
+// import FilterSessions from "../schedule/filterSessions";
+// import EmptySchedule from "../schedule/EmptySchedule";
+// import F8Fonts from "../../common/F8Fonts";
+// import ScheduleListView from "../schedule/ScheduleListView";
+// import F8TimelineBackground from "../../common/F8TimelineBackground";
 
 import TrendListView from "./TrendListView";
-
 
 /**
 * ==============================================================================
@@ -118,8 +121,8 @@ class F8TrendsView extends React.Component {
 
     const content = (
       <ListContainer
-          selectedSegment={this.selectedTrend(this.props.trend_category)}
-          onSegmentChange={this.switchTrendCategory }
+        selectedSegment={this.selectedTrend(this.props.trend_category)}
+        onSegmentChange={this.switchTrendCategory}
         headerBackgroundColor={F8Colors.tangaroa}
         headerTitleColor={F8Colors.pink}
         title="Trends"
@@ -134,22 +137,22 @@ class F8TrendsView extends React.Component {
         {/*  renderRow={this.renderRow}*/}
         {/*/>*/}
         <TrendListView
-            title="Thing"
-            category={"thing"}
-            trends={trends}
-            renderEmptyList={this.renderEmptyList}
-            //renderHeader={_ => this.renderGanttChart(1, sessions)}
-            //renderFooter={_ => <F8TimelineBackground height={80} />}
-            navigator={this.props.navigator}
+          title="Thing"
+          category={"thing"}
+          trends={trends}
+          renderEmptyList={this.renderEmptyList}
+          //renderHeader={_ => this.renderGanttChart(1, sessions)}
+          //renderFooter={_ => <F8TimelineBackground height={80} />}
+          navigator={this.props.navigator}
         />
         <TrendListView
-            title="Footprint"
-            category={"footprint"}
-            trends={trends}
-            renderEmptyList={this.renderEmptyList}
-            //renderHeader={_ => this.renderGanttChart(2, sessions)}
-            //renderFooter={_ => <F8TimelineBackground height={80} />}
-            navigator={this.props.navigator}
+          title="Footprint"
+          category={"footprint"}
+          trends={trends}
+          renderEmptyList={this.renderEmptyList}
+          //renderHeader={_ => this.renderGanttChart(2, sessions)}
+          //renderFooter={_ => <F8TimelineBackground height={80} />}
+          navigator={this.props.navigator}
         />
       </ListContainer>
     );
@@ -218,17 +221,17 @@ class F8TrendsView extends React.Component {
     //const otherDay = day === 1 ? 2 : 1;
     //const dayDir = day === 1 ? "left" : "right";
     return (
-        <EmptyTrend
-            style={{ height: containerHeight }}
-            title={`No category ${category} matches`}
-            titleStyles={{ marginBottom: 5 }}
-            // text={`Swipe ${dayDir} for Day ${otherDay}`.toUpperCase()}
-            //  textStyles={{
-            //   fontFamily: F8Fonts.fontWithWeight(F8Fonts.basis, "helvetica"),
-            //   color: F8Colors.colorWithAlpha("tangaroa", 0.5),
-            //   fontSize: 13
-            // }}
-        />
+      <EmptyTrend
+        style={{ height: containerHeight }}
+        title={`No category ${category} matches`}
+        titleStyles={{ marginBottom: 5 }}
+        // text={`Swipe ${dayDir} for Day ${otherDay}`.toUpperCase()}
+        //  textStyles={{
+        //   fontFamily: F8Fonts.fontWithWeight(F8Fonts.basis, "helvetica"),
+        //   color: F8Colors.colorWithAlpha("tangaroa", 0.5),
+        //   fontSize: 13
+        // }}
+      />
     );
   }
 
@@ -253,8 +256,7 @@ class F8TrendsView extends React.Component {
   switchTrendCategory(page: Number) {
     if (page === 0) {
       this.props.switchTrendCategory("thing");
-    }
-    else if (page === 1) {
+    } else if (page === 1) {
       this.props.switchTrendCategory("footprint");
     }
   }
@@ -262,10 +264,11 @@ class F8TrendsView extends React.Component {
   selectedTrend(category) {
     if (category === "thing") {
       return 0;
-    } else if(category === "footprint") {
+    } else if (category === "footprint") {
       return 1;
-    } else
+    } else {
       return 1;
+    }
   }
 }
 
@@ -290,10 +293,10 @@ function sortFeatured(trends = []) {
   return [...pinned, ...other];
 }
 
-
 function actions(dispatch) {
   return {
-    switchTrendCategory: (trend_category) => dispatch(switchTrendCategory(trend_category)),
+    switchTrendCategory: trend_category =>
+      dispatch(switchTrendCategory(trend_category)),
     filterTopics: selected => dispatch(applyTrendFilter(selected)),
     clearFilter: _ => dispatch(clearTrendFilter())
   };
@@ -304,7 +307,7 @@ function select(store) {
     trends: data(store),
     topics: store.trendTopics,
     filter: store.trendFilter,
-    trend_category : store.navigation.trend_category
+    trend_category: store.navigation.trend_category
   };
 }
 

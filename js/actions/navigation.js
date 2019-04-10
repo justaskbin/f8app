@@ -43,5 +43,4 @@ module.exports = {
     type: "SWITCH_TREND_CATEGORY",
     trend_category
   })
-
 };

@@ -38,7 +38,11 @@ type State = {
   trend_category: TrendCategory
 };
 
-const initialState: State = { tab: "schedule", day: 1, trend_category: "thing" };
+const initialState: State = {
+  tab: "schedule",
+  day: 1,
+  trend_category: "things"
+};
 
 function navigation(state: State = initialState, action: Action): State {
   if (action.type === "SWITCH_TAB") {

@@ -27,7 +27,7 @@ import React from "react";
 import F8Colors from "../../common/F8Colors";
 import StyleSheet from "../../common/F8StyleSheet";
 import F8Header from "../../common/F8Header";
-import {StatusBar, View, ScrollView, Image, Dimensions} from "react-native";
+import { StatusBar, View, ScrollView, Image, Dimensions } from "react-native";
 import { Heading2, Paragraph } from "../../common/F8Text";
 //import F8VideoPlayer from "../../video/F8VideoPlayer";
 import { connect } from "react-redux";
@@ -37,12 +37,12 @@ import { connect } from "react-redux";
 ============================================================================= */
 
 const WINDOW_WIDTH = Dimensions.get("window").width,
-    CONTAINER_PADDING_H = 15,
-    GUTTER = 8,
-    WIDTH_LARGE = WINDOW_WIDTH - CONTAINER_PADDING_H * 2,
-//    WIDTH_SMALL = (WINDOW_WIDTH - CONTAINER_PADDING_H * 2 - GUTTER) / 2,
-//    IMAGE_ASPECT_RATIO_SMALL = 99 / 169,
-    IMAGE_ASPECT_RATIO_LARGE = 202 / 344;
+  CONTAINER_PADDING_H = 15,
+  // GUTTER = 8,
+  WIDTH_LARGE = WINDOW_WIDTH - CONTAINER_PADDING_H * 2,
+  //    WIDTH_SMALL = (WINDOW_WIDTH - CONTAINER_PADDING_H * 2 - GUTTER) / 2,
+  //    IMAGE_ASPECT_RATIO_SMALL = 99 / 169,
+  IMAGE_ASPECT_RATIO_LARGE = 202 / 344;
 
 class F8TrendView extends React.Component {
   render() {
@@ -54,7 +54,6 @@ class F8TrendView extends React.Component {
     //   rightItem = {
     //     title: "Share",
     //     layout: "icon",
-    //     //$FlowFixMe
     //     icon: require("../../common/img/header/share.png"),
     //     onPress: this.share
     //   };
@@ -116,10 +115,10 @@ class F8TrendView extends React.Component {
   renderImage(src, width, height) {
     if (src) {
       return (
-          <Image
-              style={[styles.image, { width, height }]}
-              source={{ uri: src }}
-          />
+        <Image
+          style={[styles.image, { width, height }]}
+          source={{ uri: src }}
+        />
       );
     } else {
       return <View style={[styles.image, { width, height }]} />;
@@ -128,9 +127,9 @@ class F8TrendView extends React.Component {
 
   getImageSize() {
     return {
-          imageWidth: WIDTH_LARGE,
-          imageHeight: WIDTH_LARGE * IMAGE_ASPECT_RATIO_LARGE
-        }
+      imageWidth: WIDTH_LARGE,
+      imageHeight: WIDTH_LARGE * IMAGE_ASPECT_RATIO_LARGE
+    };
   }
 
   // share = _ => {

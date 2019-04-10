@@ -22,7 +22,7 @@
 "use strict";
 
 import type { Trend } from "../../reducers/trends";
-import type {Session} from "../../reducers/sessions";
+// import type { Session } from "../../reducers/sessions";
 
 type StringMap = { [key: string]: boolean };
 
@@ -101,6 +101,9 @@ export function byTopics(
   });
 }
 
-export function byCategory(trends: Array<Trend>, category: string): Array<Trend> {
+export function byCategory(
+  trends: Array<Trend>,
+  category: string
+): Array<Trend> {
   return trends.filter(trend => trend.category === category);
 }
